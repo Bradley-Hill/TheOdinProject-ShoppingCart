@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Homepage() {
   return (
-    <div>
+    <div className='bg-homepage'>
       <p>I am the Homepage</p>
     </div>
   )

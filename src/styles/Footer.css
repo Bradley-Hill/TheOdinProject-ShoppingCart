@@ -1,0 +1,10 @@
+.footer{
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem;
+    background-color: antiquewhite ;
+}
+
+.footer ul{
+    list-style: none;
+}

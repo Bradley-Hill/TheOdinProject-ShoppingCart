@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
-import "./Navbar.css"
+import Logo from "../assets/deckbuilder_icon.svg"
+import "../styles/Navbar.css"
 
 
 function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        <Link to="/" className="logo">Logo</Link>
+    <img src={Logo} alt="Website Logo" className="logo" />
       </div>
       <div className="navbar-center">
         <ul className="nav-links">

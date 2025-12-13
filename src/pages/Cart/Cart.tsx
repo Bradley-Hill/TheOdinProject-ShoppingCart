@@ -15,6 +15,22 @@ export default function Cart() {
     }
   };
 
+  const handleExportList = async () => {
+    const exportText = cart.map((item)=>{
+      const card = findCard(item.scryfall_id)
+      return `${item.quantity} ${card?.name || "Unknown Card"}`
+    })
+    .join("\n");
+
+    try{
+      await navigator.clipboard.writeText(exportText)
+      alert("Decklist copied to clipboard!")
+    } catch(err){
+      console.error("Failed to copy to clipboard:", err);
+      alert("Failed to copy decklist to clipboard.");
+    }
+  }
+
   return (
     <div className="bg-cart-page">
       <h1>Shopping Cart</h1>
@@ -43,7 +59,7 @@ export default function Cart() {
           })}
         </div>
       )}
-      <CartSidebar cart={cart} onClearCart={clearCart} />
+      <CartSidebar cart={cart} onClearCart={clearCart} onExportList={handleExportList} />
     </div>
   );
 }

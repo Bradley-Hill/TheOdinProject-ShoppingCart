@@ -1,8 +1,12 @@
 import type { CartItem, CartSidebarProps } from "../../types/CartItem";
 
-export function CartSidebar({cart, onClearCart}: CartSidebarProps) {
+export function CartSidebar({
+  cart,
+  onClearCart,
+  onExportList,
+}: CartSidebarProps) {
   const total = cart.reduce(
-    (sum:number, item:CartItem) => sum + item.price_eur * item.quantity,
+    (sum: number, item: CartItem) => sum + item.price_eur * item.quantity,
     0
   );
 
@@ -13,8 +17,7 @@ export function CartSidebar({cart, onClearCart}: CartSidebarProps) {
   };
 
   const handleExportList = () => {
-    console.log("Export list feature coming soon!");
-    // TODO: Implement export list functionality
+    onExportList();
   };
 
   const handlePurchase = () => {

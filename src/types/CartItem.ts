@@ -20,4 +20,5 @@ interface CardType {
 export interface CartSidebarProps {
   cart: CartItem[];
   onClearCart: () => void;
+  onExportList: () => void;
 }

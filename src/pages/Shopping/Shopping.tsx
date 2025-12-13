@@ -19,7 +19,6 @@ export default function Shopping() {
     currentSet,
     loading: contextLoading,
     error: contextError,
-    selectSet,
   } = useShoppingContext();
 
   useEffect(() => {
@@ -39,6 +38,12 @@ export default function Shopping() {
   useEffect(() => {
     setFilteredCards([]);
   }, [currentSet]);
+
+  useEffect(() => {
+    if (contextError) {
+      setError(contextError);
+    }
+  }, [contextError]);
 
   const handleFilterChange = (filters: {
     colors: string[];

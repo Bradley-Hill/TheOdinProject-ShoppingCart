@@ -4,6 +4,7 @@ import { useShoppingContext } from "../../context/ShoppingProvider";
 import Card from "../../components/Card";
 import { SetSelector } from "./SetSelector";
 import { CardFilter } from "./CardFilter";
+import {Spinner} from "../../components/Spinner";
 import type { MagicCard } from "../../types/MagicCard";
 import "../../styles/Shopping.css";
 
@@ -77,17 +78,21 @@ export default function Shopping() {
   }
   const cardsToDisplay = getCardsToDisplay();
 
-  if (loading) return <div>Loading Cards...</div>;
+  if (loading) return <Spinner />;
   if (error) return <div>Error: {error}</div>;
   return (
     <div className="bg-shopping-page">
       <SetSelector />
       <CardFilter onFilterChange={handleFilterChange} />
-      <div className="cards-grid">
-        {cardsToDisplay.map((card) => (
-          <Card key={card.scryfall_id} card={card} />
-        ))}
-      </div>
+      {contextLoading ? (
+        <Spinner />
+      ) : (
+        <div className="cards-grid">
+          {cardsToDisplay.map((card) => (
+            <Card key={card.scryfall_id} card={card} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

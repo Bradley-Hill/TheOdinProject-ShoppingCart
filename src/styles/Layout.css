@@ -13,21 +13,21 @@ html {
   flex: 1;
 }
 
-.layout.bg-homepage {
+.bg-homepage {
   background-image: url("../assets/homepage-background.jpg");
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
 }
 
-.layout.bg-shopping-page {
+.bg-shopping-page {
   background-image: url("../assets/shoppingpage-background.jpg");
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
 }
 
-.layout.bg-cart-page {
+.bg-cart-page {
   background-image: url("../assets/cartpage-background.png");
   background-position: center;
   background-attachment: fixed;

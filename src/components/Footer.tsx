@@ -45,9 +45,6 @@ function Footer() {
           </a>
         </ul>
       </div>
-      <div className="description">
-        <p>This is a simple project, to allow people to create a deck of M:tG cards for commander and see approximate prices, using the Scryfall API</p>
-      </div>
       <div className="disclaimer">This is a free project, created as an exercise for The Odin Project - Copyright Bradley Hill 2025</div>
     </footer>
   );

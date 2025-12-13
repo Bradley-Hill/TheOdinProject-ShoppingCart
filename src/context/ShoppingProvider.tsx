@@ -44,9 +44,11 @@ function ShoppingProvider({ children }: { children: React.ReactNode }) {
       }
     });
   };
+
   const removeFromCart = (scryfall_id: string) => {
     setCart((cart) => cart.filter((item) => item.scryfall_id !== scryfall_id));
   };
+
   const clearCart = () => {
     setCart([]);
   };
@@ -61,20 +63,24 @@ function ShoppingProvider({ children }: { children: React.ReactNode }) {
       );
     });
   };
+
   const selectSet = async (setCode: string) => {
     if (!sets[setCode]) {
       setLoading(true);
       setError(null);
+      setCurrentSet(setCode);
       try {
         const cardsFromAPI: MagicCard[] = await fetchSetCards(setCode);
+        // await new Promise((resolve) => setTimeout(resolve, 1000)); simulate delay
         setSets((prevSets) => ({ ...prevSets, [setCode]: cardsFromAPI }));
-        setLoading(false);
       } catch (err: any) {
         setError(err.message);
+      } finally {
         setLoading(false);
       }
+    } else {
+      setCurrentSet(setCode);
     }
-    setCurrentSet(setCode);
   };
 
   const value: ShoppingContextValue = useMemo(
@@ -92,6 +98,7 @@ function ShoppingProvider({ children }: { children: React.ReactNode }) {
     }),
     [cart, sets, currentSet, loading, error]
   );
+
   return (
     <ShoppingContext.Provider value={value}>
       {children}

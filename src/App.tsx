@@ -8,7 +8,7 @@ import "./styles/App.css";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/TheOdinProject-ShoppingCart">
       <ShoppingProvider>
         <Routes>
           <Route element={<Layout />}>

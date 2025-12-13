@@ -1,0 +1,44 @@
+.setSelector-container {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 2rem;
+  background-color: rgba(250, 235, 215, 0.7);
+  margin: 0 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.setSelector-container select {
+  padding: 0.75rem 1rem;
+  border: 0.125rem solid rgba(199, 107, 107, 0.5);
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: white;
+  color: #333;
+  transition: all 0.2s ease;
+  min-width: 200px;
+}
+
+.setSelector-container select:hover:not(:disabled) {
+  border-color: rgba(199, 107, 107, 0.8);
+  box-shadow: 0 0.125rem 0.5rem rgba(199, 107, 107, 0.2);
+}
+
+.setSelector-container select:focus {
+  outline: none;
+  border-color: rgba(199, 107, 107, 0.9);
+  box-shadow: 0 0 0 0.1875rem rgba(199, 107, 107, 0.1);
+}
+
+.setSelector-container select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #f5f5f5;
+}
+
+.setSelector-container select option {
+  background-color: white;
+  color: #333;
+  padding: 0.5rem;
+}

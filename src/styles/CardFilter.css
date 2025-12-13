@@ -1,0 +1,80 @@
+.filterOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  background-color: rgba(250, 235, 215, 0.7);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.filterColor,
+.filterTypes,
+.filterRarities,
+.filterPrice {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 200px;
+  /* align-items: space-around; */
+}
+
+.filterOptions h3 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.filterOptions label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: #555;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  padding-left: 6rem;
+}
+
+.filterOptions label:hover {
+  color: #333;
+}
+
+.filterOptions input[type="checkbox"] {
+  cursor: pointer;
+  width: 1.125rem;
+  height: 1.125rem;
+  accent-color: rgba(199, 107, 107, 0.7);
+}
+
+.filterPrice input[type="number"] {
+  padding: 0.5rem;
+  border: 0.0625rem solid #ddd;
+  border-radius: 0.25rem;
+  font-size: 0.95rem;
+  width: 7.5rem;
+}
+
+.filterPrice input[type="number"]:focus {
+  outline: none;
+  border-color: rgba(199, 107, 107, 0.7);
+  box-shadow: 0 0 0 0.125rem rgba(199, 107, 107, 0.1);
+}
+
+@media (max-width: 768px) {
+  .filterOptions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .filterColor,
+  .filterTypes,
+  .filterRarities,
+  .filterPrice {
+    min-width: auto;
+  }
+}

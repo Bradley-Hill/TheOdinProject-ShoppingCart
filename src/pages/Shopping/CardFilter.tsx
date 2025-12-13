@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { CardFilterProps } from "../../types/FilterOptions";
+import "../../styles/CardFilter.css"
 
 export function CardFilter({ onFilterChange }: CardFilterProps) {
   const [colors, setColors] = useState<string[]>([]);

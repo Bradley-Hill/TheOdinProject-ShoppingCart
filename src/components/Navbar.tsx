@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
-import Logo from "../assets/deckbuilder_icon.svg"
-import "../styles/Navbar.css"
-
+import Logo from "../assets/deckbuilder_icon.svg";
+import { useShoppingContext } from "../context/ShoppingProvider";
+import "../styles/Navbar.css";
 
 function Navbar() {
+  const { cart } = useShoppingContext();
   return (
     <nav className="navbar">
       <div className="navbar-left">
-    <img src={Logo} alt="Website Logo" className="logo" />
+        <img src={Logo} alt="Website Logo" className="logo" />
       </div>
       <div className="navbar-center">
         <ul className="nav-links">
@@ -19,8 +20,11 @@ function Navbar() {
           </li>
         </ul>
       </div>
-      <div className="navbar-left">
-        <Link to="/cart" className="cart-link">Cart</Link>
+      <div className="navbar-right">
+        <Link to="/cart" className="cart-link">
+          Cart{" "}
+          {cart.length > 0 && <span className="cart-badge">{cart.length}</span>}
+        </Link>
       </div>
     </nav>
   );

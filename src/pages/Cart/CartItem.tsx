@@ -1,4 +1,5 @@
 import type { CartItemProps } from "../../types/CartItem";
+import "../../styles/CartItem.css"
 
 export function CartItem({
   cartItem,

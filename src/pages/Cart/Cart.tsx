@@ -2,6 +2,7 @@ import { useShoppingContext } from "../../context/ShoppingProvider";
 import { CartItem } from "./CartItem";
 import type { MagicCard } from "../../types/MagicCard";
 import CartSidebar from "./CartSidebar";
+import "../../styles/Cart.css";
 
 export default function Cart() {
   const { cart, sets, removeFromCart, clearCart, updateCartItemQuantity } =
@@ -13,10 +14,6 @@ export default function Cart() {
       if (card) return card;
     }
   };
-
-  // if (cart.length === 0) {
-  //   return <div>Your cart is empty</div>;
-  // }
 
   return (
     <div className="bg-cart-page">

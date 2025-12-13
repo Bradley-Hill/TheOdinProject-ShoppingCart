@@ -11,4 +11,5 @@ export interface ShoppingContextValue{
     removeFromCart: (scryfall_id:string) => void
     clearCart: () => void
     selectSet: (setCode: string) => Promise<void>
+    updateCartItemQuantity: (scryfall_id:string, quantity:number) => void
 }

@@ -1,15 +1,17 @@
 import { createContext, useContext, useMemo, useState } from "react";
 import type { ShoppingContextValue } from "../types/ShoppingContextValue";
 import type { CartItem } from "../types/CartItem";
-import { fetchSetCards } from "../services/fetchSetCards";
 import type { MagicCard } from "../types/MagicCard";
+import { fetchSetCards } from "../services/fetchSetCards";
 
 export const useShoppingContext = () => {
-    const context = useContext(ShoppingContext);
-    if (!context) {
-        throw new Error("useShoppingContext must be used within a ShoppingProvider");
-    }
-    return context;
+  const context = useContext(ShoppingContext);
+  if (!context) {
+    throw new Error(
+      "useShoppingContext must be used within a ShoppingProvider"
+    );
+  }
+  return context;
 };
 
 export const ShoppingContext = createContext<ShoppingContextValue | undefined>(
@@ -48,6 +50,17 @@ function ShoppingProvider({ children }: { children: React.ReactNode }) {
   const clearCart = () => {
     setCart([]);
   };
+
+  const updateCartItemQuantity = (scryfall_id: string, quantity: number) => {
+    setCart((cart) => {
+      if (quantity <= 0) {
+        return cart.filter((item) => item.scryfall_id !== scryfall_id);
+      }
+      return cart.map((item) =>
+        item.scryfall_id === scryfall_id ? { ...item, quantity } : item
+      );
+    });
+  };
   const selectSet = async (setCode: string) => {
     if (!sets[setCode]) {
       setLoading(true);
@@ -62,7 +75,7 @@ function ShoppingProvider({ children }: { children: React.ReactNode }) {
       }
     }
     setCurrentSet(setCode);
-  }
+  };
 
   const value: ShoppingContextValue = useMemo(
     () => ({
@@ -75,6 +88,7 @@ function ShoppingProvider({ children }: { children: React.ReactNode }) {
       removeFromCart,
       clearCart,
       selectSet,
+      updateCartItemQuantity,
     }),
     [cart, sets, currentSet, loading, error]
   );

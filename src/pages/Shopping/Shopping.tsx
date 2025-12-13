@@ -4,7 +4,8 @@ import { useShoppingContext } from "../../context/ShoppingProvider";
 import Card from "../../components/Card";
 import { SetSelector } from "./SetSelector";
 import { CardFilter } from "./CardFilter";
-import {Spinner} from "../../components/Spinner";
+import { Spinner } from "../../components/Spinner";
+import { ErrorDisplay } from "../../components/ErrorDisplay";
 import type { MagicCard } from "../../types/MagicCard";
 import "../../styles/Shopping.css";
 
@@ -35,9 +36,9 @@ export default function Shopping() {
     loadCards();
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     setFilteredCards([]);
-  }, [currentSet])
+  }, [currentSet]);
 
   const handleFilterChange = (filters: {
     colors: string[];
@@ -45,15 +46,18 @@ export default function Shopping() {
     rarities: string[];
     maxPrice: number | null;
   }) => {
-    const sourceCards = currentSet && sets[currentSet] ? sets[currentSet] : cards;
+    const sourceCards =
+      currentSet && sets[currentSet] ? sets[currentSet] : cards;
     const filtered = sourceCards.filter((card) => {
       const passesColorFilter =
         filters.colors.length === 0 ||
-        (card.color_identity && filters.colors.some((color) => card.color_identity.includes(color)));
+        (card.color_identity &&
+          filters.colors.some((color) => card.color_identity.includes(color)));
 
       const passesTypeFilter =
         filters.types.length === 0 ||
-        (card.type_line && filters.types.some((type) => card.type_line.includes(type)));
+        (card.type_line &&
+          filters.types.some((type) => card.type_line.includes(type)));
 
       const passesRarityFilter =
         filters.rarities.length === 0 || filters.rarities.includes(card.rarity);
@@ -71,15 +75,15 @@ export default function Shopping() {
     setFilteredCards(filtered);
   };
 
-  const getCardsToDisplay = ()=>{
-    if(currentSet && filteredCards.length > 0) return filteredCards
-    if(currentSet && sets[currentSet]) return sets[currentSet]
+  const getCardsToDisplay = () => {
+    if (currentSet && filteredCards.length > 0) return filteredCards;
+    if (currentSet && sets[currentSet]) return sets[currentSet];
     return cards;
-  }
+  };
   const cardsToDisplay = getCardsToDisplay();
 
   if (loading) return <Spinner />;
-  if (error) return <div>Error: {error}</div>;
+  if (error) return <ErrorDisplay message={error} />;
   return (
     <div className="bg-shopping-page">
       <SetSelector />

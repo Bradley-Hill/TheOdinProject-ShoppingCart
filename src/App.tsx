@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Homepage from "./pages/Homepage";
 import Shopping from "./pages/Shopping/Shopping";
@@ -8,7 +8,7 @@ import "./styles/App.css";
 
 function App() {
   return (
-    <BrowserRouter basename="/TheOdinProject-ShoppingCart">
+    <HashRouter>
       <ShoppingProvider>
         <Routes>
           <Route element={<Layout />}>
@@ -18,7 +18,7 @@ function App() {
           </Route>
         </Routes>
       </ShoppingProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
